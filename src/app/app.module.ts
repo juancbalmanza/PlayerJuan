@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AuthModule } from '@auth0/auth0-angular';
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +13,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AuthModule.forRoot({
+      domain: 'dev-5crike50.us.auth0.com',
+      clientId: '4GiOl2RhkUTKhc3C3jsKwwBMohYqpizy',
+      cacheLocation: 'localstorage',
+      useRefreshTokens: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
