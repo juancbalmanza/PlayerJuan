@@ -1,0 +1,8 @@
+<!-- <button class="btn btn-{{(auth.isAuthenticated$ | async) ? 'danger' : 'primary'}}" (click)="redireccionLogin()">
+  {{(auth.isAuthenticated$ | async) ? 'Salir' : 'Ingresar'}}
+</button>
+ -->
+
+<button class="btn btn-{{(authServicio.authStatus) ? 'danger' : 'primary'}}" (click)="accionAuth()">
+  {{(authServicio.authStatus) ? 'Salir' : 'Ingresar'}}
+</button>
