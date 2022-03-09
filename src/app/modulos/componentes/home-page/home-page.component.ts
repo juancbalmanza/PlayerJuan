@@ -10,6 +10,9 @@ import { AuthLoginService } from 'src/app/compartido/servicios/auth-login.servic
 })
 export class HomePageComponent implements OnInit {
 
+  datos: any[] = [];
+  atributosDatos: any[] = [];
+  busqueda: string = '';
   usuario: any = {};
   subscripcion: any;
   constructor(public funciones: FuncionesComunesService, public authLogin: AuthLoginService) {
@@ -18,6 +21,19 @@ export class HomePageComponent implements OnInit {
         this.usuario = response;
       }
     );
+     this.datos = [
+      {id: 1, nombre: 'Juan'},
+      {id: 2, nombre: 'Prueba'},
+      {id: 3, nombre: 'Juan Pru'},
+      {id: 4, nombre: 'Juan Carlos'},
+      {id: 5, nombre: 'Juan Crls'},
+      {id: 6, nombre: 'Juan CARLOS'}
+    ];
+
+    this.atributosDatos = [
+      {id: 'id'},
+      {id: 'nombre'}
+    ];
   }
 
   ngOnInit(): void {
