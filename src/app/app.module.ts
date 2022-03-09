@@ -5,21 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AuthModule } from '@auth0/auth0-angular';
+import { CompartidoModule } from './compartido/compartido.module';
+import { LoginComponent } from './modulos/componentes/login/login.component';
+import { HomePageComponent } from './modulos/componentes/home-page/home-page.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    AuthModule.forRoot({
-      domain: 'dev-5crike50.us.auth0.com',
-      clientId: '4GiOl2RhkUTKhc3C3jsKwwBMohYqpizy',
-      cacheLocation: 'localstorage',
-      useRefreshTokens: true
-    }),
+    CompartidoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
