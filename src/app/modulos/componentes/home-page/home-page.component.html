@@ -1,1 +1,10 @@
-<p>home-page works!</p>
+<!-- Agregar información a la vista para mostrar los datos -->
+<div class="container">
+  <input type="search" class="form-control" placeholder="Ingresa el texto a buscar" [(ngModel)]="busqueda">
+  <div *ngFor="let dato of datos | filtro:atributosDatos:busqueda">
+    {{dato.nombre}}
+  </div>
+  <ng-template [ngIf]="(datos | filtro:atributosDatos:busqueda).length == 0">
+    No se encontró ningún registro con {{busqueda}} verifica e intenta de nuevo por favor
+  </ng-template>
+</div>

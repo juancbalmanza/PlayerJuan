@@ -6,11 +6,18 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthModule } from '@auth0/auth0-angular';
+import { HomePageComponent } from './modulos/componentes/home-page/home-page.component';
+import { FiltroPipe } from './compartido/pipes/filtro.pipe';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent,
+    FiltroPipe
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -21,7 +28,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       useRefreshTokens: true
     }),
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, FiltroPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
