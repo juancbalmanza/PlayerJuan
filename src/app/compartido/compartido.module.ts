@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { NgModule } from '@angular/core';
 import { BotonLoginComponent } from './componentes/boton-login/boton-login.component';
 import { AuthModule } from '@auth0/auth0-angular';
@@ -11,12 +12,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     NgbModule,
-    AuthModule.forRoot({
-      domain: 'dev-5crike50.us.auth0.com',
-      clientId: '4GiOl2RhkUTKhc3C3jsKwwBMohYqpizy',
-      cacheLocation: 'localstorage',
-      useRefreshTokens: true
-    })
+    AuthModule.forRoot(
+      {
+        domain: environment.credencialesAuth0.domain,
+        clientId: environment.credencialesAuth0.clientId,
+        cacheLocation: 'localstorage',
+        useRefreshTokens: true
+      }
+    )
   ],
   exports: [
     BotonLoginComponent
