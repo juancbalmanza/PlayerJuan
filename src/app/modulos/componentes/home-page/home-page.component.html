@@ -15,22 +15,26 @@
 <!-- Agregar información a la vista para mostrar los datos -->
 <div class="container">
   <div class="row">
-    <div class="col"><input type="search" class="form-control" placeholder="Ingresa el texto a buscar" [(ngModel)]="busqueda"></div>
+    <div class="col"><input type="search" class="form-control" placeholder="Ingresa el año, titulo, película o serie" [(ngModel)]="busqueda"></div>
     <div class="col-auto">
-      <button class="btn btn-{{ordenar.ascendente && ordenar.dato == 'nombre' ? 'success' : 'primary'}}" (click)="asignarOrdenar('nombre', 'texto')">
-        Nombre {{ordenar.ascendente && ordenar.dato == 'nombre' ? 'Des' : 'As'}}cendente
-        <fa-icon class="text-{{ordenar.ascendente && ordenar.dato == 'nombre' ? 'danger' : 'warning'}}" [icon]="ordenar.ascendente && ordenar.dato == 'nombre' ? arrowDown : arrowUp"></fa-icon>
+      <button class="btn btn-{{ordenar.ascendente && ordenar.dato == 'title' ? 'success' : 'primary'}}" (click)="asignarOrdenar('title', 'texto')">
+        Nombre {{ordenar.ascendente && ordenar.dato == 'title' ? 'Des' : 'As'}}cendente
+        <fa-icon class="text-{{ordenar.ascendente && ordenar.dato == 'title' ? 'danger' : 'warning'}}" [icon]="ordenar.ascendente && ordenar.dato == 'title' ? arrowDown : arrowUp"></fa-icon>
       </button>
     </div>
-    <div class="col-auto"><button class="btn btn-{{ordenar.ascendente && ordenar.dato == 'id' ? 'success' : 'primary'}}" (click)="asignarOrdenar('id', 'numero')">
-      Año {{ordenar.ascendente && ordenar.dato == 'id' ? 'Des' : 'As'}}cendente
-      <fa-icon class="text-{{ordenar.ascendente && ordenar.dato == 'id' ? 'danger' : 'warning'}}" [icon]="ordenar.ascendente && ordenar.dato == 'id' ? arrowDown : arrowUp"></fa-icon>
-    </button></div>
+    <div class="col-auto">
+      <button class="btn btn-{{ordenar.ascendente && ordenar.dato == 'releaseYear' ? 'success' : 'primary'}}" (click)="asignarOrdenar('releaseYear', 'numero')">
+        Año {{ordenar.ascendente && ordenar.dato == 'releaseYear' ? 'Des' : 'As'}}cendente
+        <fa-icon class="text-{{ordenar.ascendente && ordenar.dato == 'releaseYear' ? 'danger' : 'warning'}}" [icon]="ordenar.ascendente && ordenar.dato == 'releaseYear' ? arrowDown : arrowUp"></fa-icon>
+      </button>
+    </div>
   </div>
 
   <div [style.height.px]="funciones.obtenerHeight(117)" style="overflow-x: hidden">
-    <div *ngFor="let dato of datos | filtro:atributosDatos:busqueda">
-      {{dato.title}}
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4" *ngFor="let dato of (datos | filtro:atributosDatos:busqueda) | order:ordenar">
+        <app-vista-datos [dato]="dato"></app-vista-datos>
+      </div>
     </div>
     <ng-template [ngIf]="(datos | filtro:atributosDatos:busqueda).length == 0">
       No se encontró ningún registro con "{{busqueda}}"" verifica e intenta de nuevo por favor
