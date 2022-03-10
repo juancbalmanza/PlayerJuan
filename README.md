@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
+# Configuración
+
+## Consulta de Datos
+
+Para indicar el api o la ruta raíz en donde se van a consultar los datos se debe gestionar en el environment en el atributo apiPath.
+
+## Credenciales Auth0
+
+Las credenciales Auth0 se deben configurar en el environment en los atributos correspondientes.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
