@@ -28,10 +28,12 @@
     </button></div>
   </div>
 
-  <div *ngFor="let dato of (datos | filtro:atributosDatos:busqueda) | order:ordenar">
-    {{dato.id}} - {{dato.nombre}}
+  <div [style.height.px]="funciones.obtenerHeight(117)" style="overflow-x: hidden">
+    <div *ngFor="let dato of datos | filtro:atributosDatos:busqueda">
+      {{dato.title}}
+    </div>
+    <ng-template [ngIf]="(datos | filtro:atributosDatos:busqueda).length == 0">
+      No se encontró ningún registro con "{{busqueda}}"" verifica e intenta de nuevo por favor
+    </ng-template>
   </div>
-  <ng-template [ngIf]="(datos | filtro:atributosDatos:busqueda).length == 0">
-    No se encontró ningún registro con {{busqueda}} verifica e intenta de nuevo por favor
-  </ng-template>
 </div>

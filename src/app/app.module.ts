@@ -12,8 +12,10 @@ import { HomePageComponent } from './modulos/componentes/home-page/home-page.com
 import { FiltroPipe } from './compartido/pipes/filtro.pipe';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { OrderPipe } from './compartido/pipes/order.pipe';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontaweso
     OrderPipe
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

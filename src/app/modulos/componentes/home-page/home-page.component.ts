@@ -3,6 +3,8 @@ import { AuthService } from '@auth0/auth0-angular';
 import { FuncionesComunesService } from 'src/app/compartido/servicios/funciones-comunes.service';
 import { AuthLoginService } from 'src/app/compartido/servicios/auth-login.service';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { ConexionHttpService } from 'src/app/compartido/servicios/conexion-http.service';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -18,25 +20,19 @@ export class HomePageComponent implements OnInit {
   ordenar: any = {ascendente: null, dato: 'nombre', tipo: 'texto'};
   arrowUp: any = faArrowUp;
   arrowDown: any = faArrowDown;
-  constructor(public funciones: FuncionesComunesService, public authLogin: AuthLoginService) {
+
+  constructor(public funciones: FuncionesComunesService, public authLogin: AuthLoginService, public http: ConexionHttpService) {
     this.subscripcion = this.authLogin.getUsuarioConsultado().subscribe(
       response => {
         this.usuario = response;
+        this.consultarDatos();
       }
     );
 
-     this.datos = [
-      {id: 1, nombre: 'Juan'},
-      {id: 2, nombre: 'Prueba'},
-      {id: 3, nombre: 'Juan Pru'},
-      {id: 4, nombre: 'Juan Carlos'},
-      {id: 5, nombre: 'suan Crls'},
-      {id: 6, nombre: 'Juan CARLOS'}
-    ];
-
     this.atributosDatos = [
-      {id: 'id'},
-      {id: 'nombre'}
+      {id: 'releaseYear'},
+      {id: 'title'},
+      {id: 'programType'}
     ];
   }
 
@@ -50,7 +46,14 @@ export class HomePageComponent implements OnInit {
     } else {
       this.ordenar = {ascendente: true, dato, tipo};
     }
-
+  }
+    
+  consultarDatos(): void {
+    this.http.get('movies.json').subscribe(
+      response => {
+        this.datos = response.entries;
+      }
+    );
   }
 
 }
