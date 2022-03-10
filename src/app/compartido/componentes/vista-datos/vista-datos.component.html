@@ -1,0 +1,40 @@
+<div class="row p-3" (click)="abrirModal(modalInfo)" style="cursor: pointer;">
+  <div class="col-12" style="text-align: center;">
+    <div class="row justify-content-center">
+      <div class="col-auto" style="text-align: center;">
+        <img [src]="dato.images['Poster Art'].url" style="width: 200px; border-radius: 5px;">
+        <span style="position: absolute; left: 15px;"class="badge badge-{{dato.programType == 'movie' ? 'primary' : 'success'}}">{{dato.programType}}</span>
+        <span style="position: absolute; right: 15px; bottom: 0"class="badge badge-warning">{{dato.releaseYear}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12" style="text-align: center;">
+    {{dato.title}}
+  </div>
+</div>
+
+<ng-template #modalInfo let-modalInfo>
+  <div class="row m-3">
+    <div class="col-6">
+      <img [src]="dato.images['Poster Art'].url" style="width: 200px; border-radius: 5px;">
+    </div>
+    <div class="col-6">
+      <div><h1>{{dato.title}}</h1></div>
+      <div>
+        <span class="badge badge-{{dato.programType == 'movie' ? 'primary' : 'success'}}">{{dato.programType}}</span>
+        <span class="badge badge-warning">{{dato.releaseYear}}</span>
+      </div>
+      <div>
+        <b>Descripción</b>
+      </div>
+      <div style="text-align: justify;">
+        {{dato.description}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-danger"
+              (click)="modalInfo.close('Close click')">Cerrar
+      </button>
+  </div>
+</ng-template>
