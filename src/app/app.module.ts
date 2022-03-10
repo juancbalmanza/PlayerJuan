@@ -12,6 +12,7 @@ import { HomePageComponent } from './modulos/componentes/home-page/home-page.com
 import { FiltroPipe } from './compartido/pipes/filtro.pipe';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     FiltroPipe
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,
