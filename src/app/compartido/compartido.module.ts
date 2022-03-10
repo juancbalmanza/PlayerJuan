@@ -3,10 +3,12 @@ import { BotonLoginComponent } from './componentes/boton-login/boton-login.compo
 import { AuthModule } from '@auth0/auth0-angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VistaDatosComponent } from './componentes/vista-datos/vista-datos.component';
 
 @NgModule({
   declarations: [
-    BotonLoginComponent
+    BotonLoginComponent,
+    VistaDatosComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     })
   ],
   exports: [
-    BotonLoginComponent
+    BotonLoginComponent,
+    VistaDatosComponent
   ],
   providers: [],
   bootstrap: []
