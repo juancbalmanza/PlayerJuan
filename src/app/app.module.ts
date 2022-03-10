@@ -12,22 +12,26 @@ import { HomePageComponent } from './modulos/componentes/home-page/home-page.com
 import { FiltroPipe } from './compartido/pipes/filtro.pipe';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { OrderPipe } from './compartido/pipes/order.pipe';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomePageComponent,
-    FiltroPipe
+    FiltroPipe,
+    OrderPipe
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    CompartidoModule
+    CompartidoModule,
+    FontAwesomeModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, FiltroPipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
